@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CarListView: View {
+    @ObservedObject var model = CarModel()
+    
     var body: some View {
         ScrollView {
             LazyVStack {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA02E24828E39E9400F4F9B5 /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA02E24728E39E9400F4F9B5 /* CarModel.swift */; };
 		BA705A7D28E374B20014D60C /* CarListingApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA705A7C28E374B20014D60C /* CarListingApp.swift */; };
 		BA705A7F28E374B20014D60C /* CarListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA705A7E28E374B20014D60C /* CarListView.swift */; };
 		BA705A8128E374B90014D60C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA705A8028E374B90014D60C /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA02E24728E39E9400F4F9B5 /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
 		BA705A7928E374B20014D60C /* CarListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA705A7C28E374B20014D60C /* CarListingApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListingApp.swift; sourceTree = "<group>"; };
 		BA705A7E28E374B20014D60C /* CarListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListView.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		BA705A8C28E374DD0014D60C /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				BA02E24728E39E9400F4F9B5 /* CarModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 			files = (
 				BA705A9128E3757C0014D60C /* CarCard.swift in Sources */,
 				BA705A7F28E374B20014D60C /* CarListView.swift in Sources */,
+				BA02E24828E39E9400F4F9B5 /* CarModel.swift in Sources */,
 				BA705A7D28E374B20014D60C /* CarListingApp.swift in Sources */,
 				BAAEFF9328E3985F00C6C726 /* RatingView.swift in Sources */,
 				BA705A8F28E375370014D60C /* Car.swift in Sources */,

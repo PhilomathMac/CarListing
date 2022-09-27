@@ -8,7 +8,7 @@
 import Foundation
 
 struct Car: Codable, Identifiable {
-    let id: Int
+    let id = UUID()
     let consList: [String]
     let customerPrice: Double
     let make: String
