@@ -32,9 +32,7 @@ struct CarCard: View {
                             .font(.caption)
                             .italic()
                         Spacer()
-                        Text("Car Rating:")
-                            .font(.caption)
-                            .bold()
+                        RatingView()
                             .padding(.bottom, 10)
                        
                     }
