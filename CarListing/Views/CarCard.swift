@@ -9,27 +9,42 @@ import SwiftUI
 
 struct CarCard: View {
     var body: some View {
-        HStack(alignment: .center) {
-            Image("Tacoma")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 250)
-            VStack(alignment: .leading) {
-                Text("Car Name")
-                    .bold()
-                Text("Car Price")
-                    .font(.caption)
-                Text("Car Rating")
-                    .padding(.top, 20)
+        ZStack {
+            Rectangle()
+                .foregroundColor(.white)
+            GeometryReader { geo in
+                HStack {
+                    
+                    Image("Tacoma")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geo.size.width / 2, height: geo.size.height)
+                        .clipped()
+                        .padding(.trailing, 10)
+                    
+                    VStack(alignment: .leading) {
+                        Text("Car Title")
+                            .font(.title2)
+                            .bold()
+                            .padding(.top, 10)
+                            .padding(.bottom, 1)
+                        Text("Car Price")
+                            .font(.caption)
+                            .italic()
+                        Spacer()
+                        Text("Car Rating:")
+                            .font(.caption)
+                            .bold()
+                            .padding(.bottom, 10)
+                       
+                    }
+                }
             }
-            Spacer()
         }
-        .frame(maxWidth: .infinity, alignment: .center)
-        .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
-        )
+        .cornerRadius(20)
+        .shadow(radius: 10)
+        .padding()
+        .frame(height: 250)
     }
 }
 
