@@ -13,7 +13,8 @@ struct CarListView: View {
             LazyVStack {
                 HStack {
                     Text("CarListing")
-                        .font(.title)
+                        .font(.largeTitle)
+                        .fontWeight(.heavy)
                         .bold()
                         .foregroundColor(.orange)
                     Spacer()

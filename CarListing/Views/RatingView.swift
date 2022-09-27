@@ -20,7 +20,7 @@ struct RatingView: View {
                 .padding(.vertical, 5)
             HStack {
                 ForEach(0 ..< 5, id: \.self) { num in
-                    Image(systemName: "car.fill")
+                    Image(systemName: "star.fill")
                         .foregroundColor(num < rating ? onColor : offColor)
                 }
             }
