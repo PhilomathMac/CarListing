@@ -7,6 +7,13 @@
 
 import Foundation
 
-struct Car {
-    
+struct Car: Codable, Identifiable {
+    let id: Int
+    let consList: [String]
+    let customerPrice: Double
+    let make: String
+    let marketPrice: Double
+    let model: String
+    let prosList: [String]
+    let rating: Int
 }
