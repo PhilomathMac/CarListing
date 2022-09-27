@@ -1,9 +1,9 @@
 # CarListing
-<!---
+
 <p align="center">
   <img src="https://github.com/PhilomathMac/CarListing/blob/main/PortfolioImage.png?raw=true" alt="CarListing screenshot" width="100%"/>
 </p>
---->
+
 
 ## Description
 CWC's September Community Challenge - a list of expandable cards showing car details decoded from JSON
