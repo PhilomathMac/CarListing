@@ -13,6 +13,7 @@
 		BA705A8428E374B90014D60C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA705A8328E374B90014D60C /* Preview Assets.xcassets */; };
 		BA705A8F28E375370014D60C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA705A8E28E375370014D60C /* Car.swift */; };
 		BA705A9128E3757C0014D60C /* CarCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA705A9028E3757C0014D60C /* CarCard.swift */; };
+		BA705A9328E38A7A0014D60C /* car_list.json in Resources */ = {isa = PBXBuildFile; fileRef = BA705A9228E38A790014D60C /* car_list.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		BA705A8328E374B90014D60C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BA705A8E28E375370014D60C /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		BA705A9028E3757C0014D60C /* CarCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCard.swift; sourceTree = "<group>"; };
+		BA705A9228E38A790014D60C /* car_list.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = car_list.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		BA705A8D28E374E20014D60C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				BA705A9228E38A790014D60C /* car_list.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA705A8428E374B90014D60C /* Preview Assets.xcassets in Resources */,
+				BA705A9328E38A7A0014D60C /* car_list.json in Resources */,
 				BA705A8128E374B90014D60C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
