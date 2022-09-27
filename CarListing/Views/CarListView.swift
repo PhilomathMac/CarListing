@@ -9,13 +9,22 @@ import SwiftUI
 
 struct CarListView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ScrollView {
+            LazyVStack {
+                HStack {
+                    Text("CarListing")
+                        .font(.title)
+                        .bold()
+                        .foregroundColor(.orange)
+                    Spacer()
+                }
+                .padding(20)
+                
+                    ForEach(1...5, id: \.self) { car in
+                        CarCard()
+                    }
+            }
         }
-        .padding()
     }
 }
 
