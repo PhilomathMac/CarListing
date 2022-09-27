@@ -23,9 +23,9 @@ struct CarListView: View {
                 }
                 .padding(20)
                 
-                    ForEach(1...5, id: \.self) { car in
-                        CarCard()
-                    }
+                ForEach(0..<model.cars.count, id: \.self) { num in
+                    CarCard(car: model.cars[num])
+                }
             }
         }
     }

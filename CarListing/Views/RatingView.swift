@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RatingView: View {
-    var rating: Int = 4
+    var rating: Int
     var onColor = Color(.systemOrange)
     var offColor = Color(.systemGray)
     
@@ -30,6 +30,6 @@ struct RatingView: View {
 
 struct RatingView_Previews: PreviewProvider {
     static var previews: some View {
-        RatingView()
+        RatingView(rating: 4)
     }
 }

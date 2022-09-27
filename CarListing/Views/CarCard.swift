@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CarCard: View {
+    let car: Car
+    
     var body: some View {
         ZStack {
             Rectangle()
@@ -15,7 +17,7 @@ struct CarCard: View {
             GeometryReader { geo in
                 HStack {
                     
-                    Image("Tacoma")
+                    Image(car.make)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: geo.size.width / 2, height: geo.size.height)
@@ -23,16 +25,16 @@ struct CarCard: View {
                         .padding(.trailing, 10)
                     
                     VStack(alignment: .leading) {
-                        Text("Car Title")
+                        Text("\(car.make) \(car.model)")
                             .font(.title2)
                             .bold()
                             .padding(.top, 10)
                             .padding(.bottom, 1)
-                        Text("Car Price")
+                        Text("$\(car.customerPrice)")
                             .font(.caption)
                             .italic()
                         Spacer()
-                        RatingView()
+                        RatingView(rating: car.rating)
                             .padding(.bottom, 10)
                        
                     }
@@ -48,6 +50,6 @@ struct CarCard: View {
 
 struct CarCard_Previews: PreviewProvider {
     static var previews: some View {
-        CarCard()
+        CarCard(car: Car(consList: ["Bad direction"], customerPrice: 120000.0, make: "Land Rover", marketPrice: 125000.0, model: "Range Rover", prosList: ["You can go everywhere", "Good sound system"], rating: 3))
     }
 }
