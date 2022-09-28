@@ -51,8 +51,10 @@ struct CarCard: View {
                         
                         // Details Button
                         Button {
-                            withAnimation {
-                                isExpanded.toggle()
+                            DispatchQueue.main.async {
+                                withAnimation {
+                                    isExpanded.toggle()
+                                }
                             }
                         } label: {
                             Text(isExpanded ? "Hide Details" : "Show Details" )
