@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CarCard: View {
     let car: Car
+    @State var isExpanded: Bool = false
     
     var body: some View {
         ZStack {
@@ -25,17 +26,40 @@ struct CarCard: View {
                         .padding(.trailing, 10)
                     
                     VStack(alignment: .leading) {
+                        // Car Name
                         Text("\(car.make) \(car.model)")
                             .font(.title2)
                             .bold()
                             .padding(.top, 10)
                             .padding(.bottom, 1)
+                        
+                        // Car Price
                         Text("$\(car.customerPrice)")
                             .font(.caption)
                             .italic()
-                        Spacer()
+                            .padding(.bottom, 20)
+                        
+                        // Rating
                         RatingView(rating: car.rating)
                             .padding(.bottom, 10)
+                        
+                        // Details
+                        if isExpanded {
+                            CarDetailView(car: car)
+                        }
+                        Spacer()
+                        
+                        // Details Button
+                        Button {
+                            withAnimation {
+                                isExpanded.toggle()
+                            }
+                        } label: {
+                            Text(isExpanded ? "Hide Details" : "Show Details" )
+                                .bold()
+                                .padding(.bottom, 10)
+                        }
+
                        
                     }
                 }
@@ -44,7 +68,7 @@ struct CarCard: View {
         .cornerRadius(20)
         .shadow(radius: 10)
         .padding()
-        .frame(height: 250)
+        .frame(height: isExpanded ? 400 : 250)
     }
 }
 
