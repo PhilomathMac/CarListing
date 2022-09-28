@@ -12,21 +12,35 @@ struct CarDetailView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
-            Text("Pros:")
-                .font(.caption)
-                .bold()
-            ForEach(car.prosList, id: \.self) { pro in
-                Text("• \(pro)")
+            
+            // Pro List
+            if !car.prosList.isEmpty {
+                Text("Pros:")
                     .font(.caption)
+                    .bold()
+                ForEach(car.prosList, id: \.self) { pro in
+                    if pro != "" {
+                        Text("• \(pro)")
+                            .font(.caption)
+                    }
+                }
             }
-            Text("Cons:")
-                .font(.caption)
-                .bold()
-                .padding(.top, 10)
-            ForEach(car.consList, id: \.self) { con in
-                Text("• \(con)")
+            
+            // Con List
+            if !car.consList.isEmpty {
+                Text("Cons:")
                     .font(.caption)
+                    .bold()
+                    .padding(.top, 10)
+                
+                ForEach(car.consList, id: \.self) { con in
+                    if con != "" {
+                        Text("• \(con)")
+                            .font(.caption)
+                    }
+                }
             }
+            
         }
     }
 }
