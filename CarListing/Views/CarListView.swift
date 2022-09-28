@@ -11,20 +11,21 @@ struct CarListView: View {
     @ObservedObject var model = CarModel()
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                HStack {
-                    Text("CarListing")
-                        .font(.largeTitle)
-                        .fontWeight(.heavy)
-                        .bold()
-                        .foregroundColor(.orange)
-                    Spacer()
-                }
-                .padding(20)
-                
-                ForEach(0..<model.cars.count, id: \.self) { num in
-                    CarCard(car: model.cars[num])
+        VStack {
+            HStack {
+                Text("CarListing")
+                    .font(.largeTitle)
+                    .fontWeight(.heavy)
+                    .bold()
+                    .foregroundColor(.orange)
+                Spacer()
+            }
+            .padding(20)
+            ScrollView {
+                LazyVStack {
+                    ForEach(0..<model.cars.count, id: \.self) { num in
+                        CarCard(car: model.cars[num])
+                    }
                 }
             }
         }
