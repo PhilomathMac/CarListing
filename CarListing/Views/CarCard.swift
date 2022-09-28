@@ -34,7 +34,7 @@ struct CarCard: View {
                             .padding(.bottom, 1)
                         
                         // Car Price
-                        Text("$\(car.customerPrice)")
+                        Text(car.formattedMarketPrice)
                             .font(.caption)
                             .italic()
                             .padding(.bottom, 20)

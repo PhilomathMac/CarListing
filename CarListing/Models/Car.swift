@@ -16,4 +16,24 @@ struct Car: Codable, Identifiable {
     let model: String
     let prosList: [String]
     let rating: Int
+    
+    var formattedMarketPrice: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let marketPriceString = formatter.string(from: marketPrice as NSNumber) {
+            return marketPriceString
+        } else {
+            return "Error"
+        }
+    }
+    
+    var formattedCustomerPrice: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let priceString = formatter.string(from: customerPrice as NSNumber) {
+            return priceString
+        } else {
+            return "Error"
+        }
+    }
 }
