@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CarCard: View {
     let car: Car
+    @EnvironmentObject var model: CarModel
+    
     @State var isExpanded: Bool = false
     
     var body: some View {
@@ -44,7 +46,7 @@ struct CarCard: View {
                             .padding(.bottom, 10)
                         
                         // Details
-                        if isExpanded {
+                        if car.id == model.selectedCar {
                             CarDetailView(car: car)
                         }
                         Spacer()
@@ -53,11 +55,17 @@ struct CarCard: View {
                         Button {
                             DispatchQueue.main.async {
                                 withAnimation {
-                                    isExpanded.toggle()
+                                    
+                                    if car.id == model.selectedCar {
+                                        model.selectedCar = nil
+                                    } else {
+                                        model.selectedCar = car.id
+                                    }
+                                    
                                 }
                             }
                         } label: {
-                            Text(isExpanded ? "Hide Details" : "Show Details" )
+                            Text(car.id == model.selectedCar ? "Hide Details" : "Show Details" )
                                 .bold()
                                 .padding(.bottom, 10)
                         }
@@ -70,7 +78,7 @@ struct CarCard: View {
         .cornerRadius(20)
         .shadow(radius: 10)
         .padding()
-        .frame(height: isExpanded ? 400 : 250)
+        .frame(height: car.id == model.selectedCar ? 450 : 250)
     }
 }
 

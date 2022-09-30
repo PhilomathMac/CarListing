@@ -9,9 +9,12 @@ import Foundation
 
 class CarModel: ObservableObject {
     @Published var cars: [Car] = [Car]()
+    @Published var selectedCar: UUID?
     
     init() {
         parseJSON()
+        
+        selectedCar = cars[0].id
     }
     
     func parseJSON(){
