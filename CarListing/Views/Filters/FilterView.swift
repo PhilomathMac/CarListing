@@ -13,13 +13,22 @@ struct FilterView: View {
     var body: some View {
             
             VStack(alignment: .leading, spacing: 20) {
-                Text("Filter Options")
-                    .font(.title)
-                FilterByMakeModel(userText: "")
+                HStack {
+                    Text("Filter Options")
+                        .font(.title)
+                    Spacer()
+                    Button {
+                        model.resetFilters()
+                    } label: {
+                        Text("Reset Filters")
+                    }
+
+                }
+                FilterByMakeModel(userText: model.filterText ?? "")
                 Divider()
-                FilterByPriceView(sliderValue: Float(model.maxPrice))
+                FilterByPriceView(sliderValue: Float(model.userMaxPrice ?? model.maxPrice))
                 Divider()
-                FilterByRatingView(chosenRating: 1)
+                FilterByRatingView(chosenRating: model.userMinRating ?? 1)
             }
             .padding()
     }

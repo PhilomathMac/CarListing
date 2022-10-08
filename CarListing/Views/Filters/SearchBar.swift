@@ -10,6 +10,7 @@ import SwiftUI
 struct SearchBar: View {
     @Binding var text: String
     @State private var isEditing = false
+    @EnvironmentObject var model: CarModel
     
        var body: some View {
            HStack {
@@ -29,6 +30,8 @@ struct SearchBar: View {
                            if isEditing {
                                Button(action: {
                                    self.text = ""
+                                   isEditing = false
+                                   model.filterText = nil
                                }) {
                                    Image(systemName: "multiply.circle.fill")
                                        .foregroundColor(.gray)
@@ -40,6 +43,10 @@ struct SearchBar: View {
                    .onTapGesture {
                        self.isEditing = true
                    }
+                   .onSubmit {
+                       model.filterText = text
+                   }
+                   .submitLabel(.search)
            }
        }
    }
@@ -48,5 +55,6 @@ struct SearchBar_Previews: PreviewProvider {
     @State static var text = ""
     static var previews: some View {
         SearchBar(text: $text)
+            .environmentObject(CarModel())
     }
 }

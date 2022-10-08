@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct FilterByRatingView: View {
-    @State var chosenRating: Int
+    @State var chosenRating: Int {
+        didSet {
+            model.userMinRating = chosenRating
+        }
+    }
     @EnvironmentObject var model: CarModel
     var onColor = Color(.systemOrange)
     var offColor = Color(.systemGray)
@@ -23,7 +27,6 @@ struct FilterByRatingView: View {
             ForEach(0 ..< 5, id: \.self) { num in
                 Button {
                     chosenRating = num + 1
-                    model.selectedRating = num + 1
                 } label: {
                     Image(systemName: "star.fill")
                         .foregroundColor(num < chosenRating ? onColor : offColor)
@@ -38,5 +41,6 @@ struct FilterByRatingView: View {
 struct FilterByRatingView_Previews: PreviewProvider {
     static var previews: some View {
         FilterByRatingView(chosenRating: 4)
+            .environmentObject(CarModel())
     }
 }

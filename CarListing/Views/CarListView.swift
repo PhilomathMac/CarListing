@@ -15,8 +15,14 @@ struct CarListView: View {
         NavigationView {
             ScrollView {
                 LazyVStack {
-                    ForEach(0..<model.cars.count, id: \.self) { num in
-                        CarCard(car: model.cars[num])
+                    if model.filterdCars.count < 1 {
+                        Text("No Cars With That Search Criteria")
+                            .padding()
+                    }
+                    else {
+                        ForEach(0..<model.filterdCars.count, id: \.self) { num in
+                            CarCard(car: model.filterdCars[num])
+                        }
                     }
                 }
             }

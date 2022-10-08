@@ -8,14 +8,16 @@
 import Foundation
 
 class CarModel: ObservableObject {
-    @Published var cars: [Car] = [Car]()
+    var allCars: [Car] = [Car]()
+    @Published var filterdCars: [Car] = [Car]()
+    
     @Published var selectedCar: UUID?
     
     var maxPrice: Double {
         var maxPrice = 0.0
         
         // Find Max Price
-        for car in cars {
+        for car in allCars {
             if car.marketPrice > maxPrice {
                 maxPrice = car.marketPrice
             }
@@ -32,33 +34,51 @@ class CarModel: ObservableObject {
             return "Error"
         }
     }
-    var minPrice: Double {
-        var minPrice = 0.0
-        
-        for car in cars {
-            if car.marketPrice < minPrice {
-                minPrice = car.marketPrice
-            }
-        }
-        
-        return minPrice
-    }
-    var minPriceString: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        if let priceString = formatter.string(from: minPrice as NSNumber) {
-            return priceString
-        } else {
-            return "Error"
-        }
-    }
     
-    var selectedRating: Int?
+    var userMinRating: Int? {
+        didSet {
+            getCars()
+        }
+    }
+    var userMaxPrice: Double? {
+        didSet {
+            getCars()
+        }
+    }
+    var filterText: String? {
+        didSet {
+            getCars()
+        }
+    }
     
     init() {
         parseJSON()
         
-        selectedCar = cars[0].id
+        selectedCar = allCars[0].id
+        filterdCars = allCars
+    }
+    
+    func getCars() {
+        var carsToShow = allCars
+        if userMinRating != nil {
+            carsToShow = carsToShow.filter({ $0.rating >= userMinRating! })
+        }
+        if userMaxPrice != nil {
+            carsToShow = carsToShow.filter({ $0.marketPrice <= userMaxPrice! })
+        }
+        if filterText != nil {
+            let cleanedText = filterText!.lowercased().trimmingCharacters(in: .newlines)
+            let carsWithModel = carsToShow.filter({ $0.model.lowercased().contains(cleanedText)})
+            let carsWithMake = carsToShow.filter({ $0.make.lowercased().contains(cleanedText)})
+            carsToShow = carsWithMake + carsWithModel
+        }
+        filterdCars = carsToShow
+    }
+    
+    func resetFilters() {
+        userMinRating = nil
+        userMaxPrice = nil
+        filterText = nil
     }
     
     func parseJSON(){
@@ -79,7 +99,7 @@ class CarModel: ObservableObject {
             let decoder = JSONDecoder()
             do {
                 // Decode the JSON
-                self.cars = try decoder.decode([Car].self, from: data)
+                self.allCars = try decoder.decode([Car].self, from: data)
                 
             } catch {
                 print("Error decoding data: \(error.localizedDescription)")

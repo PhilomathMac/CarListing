@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FilterByPriceView: View {
+    @EnvironmentObject var model: CarModel
     @State var sliderValue: Float
     var chosenPriceString: String {
         let formatter = NumberFormatter()
@@ -18,7 +19,6 @@ struct FilterByPriceView: View {
             return "Error"
         }
     }
-    @EnvironmentObject var model: CarModel
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -27,16 +27,16 @@ struct FilterByPriceView: View {
                 .bold()
                 .padding(.vertical, 10)
             
-            Slider(value: $sliderValue, in: Float(model.minPrice)...Float(model.maxPrice)) {
-                
+            Slider(value: $sliderValue, in: 0...Float(model.maxPrice)) {
+                Text("Testing")
             } minimumValueLabel: {
                 Text("")
             } maximumValueLabel: {
                 Text(chosenPriceString)
             }
-
-    
-
+            .onChange(of: sliderValue) { newValue in
+                model.userMaxPrice = Double(newValue)
+            }
         }
     }
 }
