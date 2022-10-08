@@ -9,18 +9,10 @@ import SwiftUI
 
 struct CarListView: View {
     @EnvironmentObject var model: CarModel
+    @State var isSearching: Bool
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("CarListing")
-                    .font(.largeTitle)
-                    .fontWeight(.heavy)
-                    .bold()
-                    .foregroundColor(.orange)
-                Spacer()
-            }
-            .padding(20)
+        NavigationView {
             ScrollView {
                 LazyVStack {
                     ForEach(0..<model.cars.count, id: \.self) { num in
@@ -28,12 +20,26 @@ struct CarListView: View {
                     }
                 }
             }
+            .navigationTitle(
+                Text("CarList")
+            )
+            .navigationBarItems(trailing: Button(action: {
+                isSearching.toggle()
+            }, label: {
+                Image(systemName: "line.3.horizontal.decrease.circle")
+            }))
         }
+        .sheet(isPresented: $isSearching) {
+            FilterView()
+                .presentationDetents([.medium])
+        }
+        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        CarListView()
+        CarListView(isSearching: false)
+            .environmentObject(CarModel())
     }
 }

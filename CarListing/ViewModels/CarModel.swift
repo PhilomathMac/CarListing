@@ -11,6 +11,50 @@ class CarModel: ObservableObject {
     @Published var cars: [Car] = [Car]()
     @Published var selectedCar: UUID?
     
+    var maxPrice: Double {
+        var maxPrice = 0.0
+        
+        // Find Max Price
+        for car in cars {
+            if car.marketPrice > maxPrice {
+                maxPrice = car.marketPrice
+            }
+        }
+        
+        return maxPrice
+    }
+    var maxPriceString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let priceString = formatter.string(from: maxPrice as NSNumber) {
+            return priceString
+        } else {
+            return "Error"
+        }
+    }
+    var minPrice: Double {
+        var minPrice = 0.0
+        
+        for car in cars {
+            if car.marketPrice < minPrice {
+                minPrice = car.marketPrice
+            }
+        }
+        
+        return minPrice
+    }
+    var minPriceString: String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        if let priceString = formatter.string(from: minPrice as NSNumber) {
+            return priceString
+        } else {
+            return "Error"
+        }
+    }
+    
+    var selectedRating: Int?
+    
     init() {
         parseJSON()
         
